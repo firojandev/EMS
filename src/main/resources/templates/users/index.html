@@ -1,5 +1,5 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
-<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="layout">
 <head>
     <title>Users</title>
@@ -54,11 +54,11 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>271</td>
-                                    <td>Altaf</td>
-                                    <td>Active</td>
+                                <tr th:each="row : ${list}">
+                                    <td th:text="${row.id}"></td>
+                                    <td th:text="${row.username}"></td>
+                                    <td th:text="${row.empName}"></td>
+                                    <td th:text="Active"></td>
                                 </tr>
 
                                 </tbody>
