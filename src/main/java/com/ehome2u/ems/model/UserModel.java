@@ -2,6 +2,9 @@ package com.ehome2u.ems.model;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "EMP_LOC_MAS",
         uniqueConstraints = {
@@ -31,8 +34,15 @@ public class UserModel {
     @Column(name = "DEVICE_INFO")
     private String deviceInfo;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "EMP_LOC_ROLES_MAP",
+            joinColumns = @JoinColumn(name = "USER_ID"),
+            inverseJoinColumns = @JoinColumn(name = "ROLE_ID"))
+    private Set<UserRole> roles = new HashSet<>();
+
     public UserModel() {
     }
+
 
     public UserModel(String username, String email, String password) {
         this.username = username;
@@ -94,5 +104,13 @@ public class UserModel {
 
     public void setDeviceInfo(String deviceInfo) {
         this.deviceInfo = deviceInfo;
+    }
+
+    public Set<UserRole> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<UserRole> roles) {
+        this.roles = roles;
     }
 }
