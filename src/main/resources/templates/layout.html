@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">EMS</title>
+    <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">EPMS</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -111,5 +111,17 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script th:src="@{/dist/js/pages/dashboard.js}"></script>
 <script layout:fragment="script" th:remove="tag"></script>
+<script type="text/javascript">
+        var url = window.location;
+
+        // for sidebar menu entirely but not cover treeview
+        $('ul.nav-sidebar a').filter(function () {
+            return this.href == url;
+        }).addClass('active');
+
+        // for treeview
+        $('ul.nav-treeview a').filter(function () {
+            return this.href == url;
+        }).parentsUntil(".nav-sidebar > .nav-treeview").addClass('menu-open').prev('a').addClass('active');</script>
 </body>
 </html>
