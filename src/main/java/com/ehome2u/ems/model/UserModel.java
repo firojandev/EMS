@@ -6,14 +6,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "EMP_LOC_MAS",
+@Table(name = "EMPLOYEE_INFO",
         uniqueConstraints = {
                 @UniqueConstraint(columnNames = "USER_NAME")
         })
 public class UserModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "EMP_LOC_MAS_SLNO")
+    @Column(name = "ID")
     private Long id;
 
     @Column(name = "USER_NAME")
@@ -25,7 +25,7 @@ public class UserModel {
     @Column(name = "EMP_EMAIL")
     private String email;
 
-    @Column(name = "USER_PASSWORD")
+    @Column(name = "PASSWORD")
     private String password;
 
     @Column(name = "APP_VERSION")
@@ -35,9 +35,9 @@ public class UserModel {
     private String deviceInfo;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "EMP_LOC_ROLES_MAP",
-            joinColumns = @JoinColumn(name = "USER_ID"),
-            inverseJoinColumns = @JoinColumn(name = "ROLE_ID"))
+    @JoinTable(name = "SA_USERINROLES",
+            joinColumns = @JoinColumn(name = "USERID"),
+            inverseJoinColumns = @JoinColumn(name = "ROLEID"))
     private Set<UserRole> roles = new HashSet<>();
 
     public UserModel() {

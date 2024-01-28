@@ -11,15 +11,15 @@ import jakarta.persistence.*;
 //INSERT INTO EMP_LOC_ROLES(name) VALUES('DSM');
 
 @Entity
-@Table(name = "EMP_LOC_ROLES")
+@Table(name = "SA_ROLES")
 public class UserRole {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @Column(name = "ROLEID")
     private Integer id;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "NAME",length = 20)
+    @Column(name = "ROLENAME",length = 20)
     private Role name;
 
     public UserRole() {
